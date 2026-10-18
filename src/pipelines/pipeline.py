@@ -8,7 +8,8 @@ def research_pipeline(topic):
     srch_agent=search_agent()
     print("Search agent working...\n")
     search_result=srch_agent.invoke({
-        "messages":[("user",f"Find recent,reliable and detailed infromation with urls about:{topic}")]
+        "messages":[("user",f"Find recent,reliable infromation and urls on:{topic}"
+                     "with the help of tool,dont ask any question or give any suggestions.")]
     })
     state["search_result"]=search_result['messages'][-1].content
 
@@ -20,7 +21,8 @@ def research_pipeline(topic):
         "messages":[("user",
                      f"based on the following search results about:{topic},"
                      f"pick the most relevant URL and scrape it for deeper content."
-                     f"Search results:{state['search_result'][:800]}")]
+                     f"Search results:{state['search_result'][:800]}"
+                     "Dont ask any question or give any suggestions.")]
     })
     state["scrape_content"]=reader_result['messages'][-1].content
     
