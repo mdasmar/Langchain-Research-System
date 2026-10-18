@@ -1,7 +1,8 @@
 from src.tools.tools import web_search,scrape_url
-# from rich import print
+from src.pipelines.pipeline import research_pipeline
+from rich import print
 
-# output=web_search.invoke("Latest AI news")
-# print(output)
-# output=scrape_url.invoke("https://tech.yahoo.com/ai")
-# print(output)
+topic="Digital Economy and UPI: Transforming India's Business and Payment Systems"
+research_pipeline(topic)
+
+
