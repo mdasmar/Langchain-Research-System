@@ -1,12 +1,22 @@
 from langchain.agents import create_agent
-from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from src.tools.tools import web_search, scrape_url
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
+import os
 load_dotenv()
 
-llm=ChatOllama(model="qwen3:8B",temperature=0)
+endpoint = os.environ["AZURE_OPENAI_ENDPOINT"].rstrip("/")
+api_key = os.environ["AZURE_OPENAI_API_KEY"]
+deployment = os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"]
+
+llm = ChatOpenAI(
+    model=deployment,
+    base_url=f"{endpoint}/openai/v1/",
+    api_key=api_key,
+    use_responses_api=False,
+)
 
 def search_agent():
     return create_agent(model=llm,tools=[web_search])
