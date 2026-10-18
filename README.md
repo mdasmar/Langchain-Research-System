@@ -2,7 +2,8 @@
 
 An AI-powered research assistant built with **LangChain**, **Azure OpenAI**, **Tavily Search**, and **Streamlit**. It searches the web for a topic, extracts content from a relevant page, drafts a structured research report, and asks a critic chain to evaluate the report.
 
-##Hosted on Render
+## Hosted on Render
+
 - **Visit My website for demo:** 
 
 ## Features
